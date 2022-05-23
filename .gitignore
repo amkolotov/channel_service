@@ -12,6 +12,6 @@ celerybeat-schedule
 pg_data/
 db_dumps/
 static/
-logs/
 db/
 venv/
+/log/*.log
