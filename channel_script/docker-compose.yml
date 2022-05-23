@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    command: >
+      sh -c "python3 script.py"
+    volumes:
+      - ./app:/app
+    env_file:
+      - ./.env
+    depends_on:
+      - db
+  db:
+    image: postgres:12.0-alpine
+    restart: always
+    volumes:
+      - psql_data:/var/lib/postgresql/data/
+    env_file:
+      - ./.env
+volumes:
+  psql_data:
